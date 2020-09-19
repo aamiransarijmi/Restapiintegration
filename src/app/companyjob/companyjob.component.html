@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center alert alert-success">
+              List of all Comapny jobs details
+              </h1>
+            </div>
+        <div class="col-md-12">
+            <button (click)="back()" class="btn btn-default float-right">Back</button>
+        </div>
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-stripped table-hover">
+                   <thead>
+                       <tr>
+                        <td>about</td>
+                        <td>categoryID</td>
+                        <td>colorCode</td>
+                        <td>designation</td>
+                        <td>designationID</td>
+                        <td>experience</td>
+                        <td>iconPath</td>
+                        <td>isActive</td>
+                        <td>location</td>
+                        <td>maxExperienceInYear</td>
+                        <td>minExperienceInYear</td>
+                        <td>noOfPosition</td>
+                        <td>openingPostion</td>
+                        <td>priority</td>
+                        <td>qualification</td>
+                        <td>skills</td>
+                        <td>specialityID</td>
+                        <td>typeID</td>
+                        <td>vacancyID</td>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       <tr *ngFor="let job of companyjob">
+                        <td>{{job.about}}</td>
+                        <td>{{job.categoryID}}</td>
+                        <td>{{job.colorCode}}</td>
+                        <td>{{job.designation}}</td>
+                        <td>{{job.designationID}}</td>
+                        <td>{{job.experience}}</td>
+                        <td>{{job.iconPath}}</td>
+                        <td>{{job.isActive}}</td>
+                        <td>{{job.location}}</td>
+                        <td>{{job.maxExperienceInYear}}</td>
+                        <td>{{job.minExperienceInYear}}</td>
+                        <td>{{job.noOfPosition}}</td>
+                        <td>{{job.openingPostion}}</td>
+                        <td>{{job.priority}}</td>
+                        <td>{{job.qualification}}</td>
+                        <td>{{job.skills}}</td>
+                        <td>{{job.specialityID}}</td>
+                        <td>{{job.typeID}}</td>
+                        <td>{{job.vacancyID}}</td>
+                       </tr>
+                   </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,167 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center alert alert-success">
+          List of all jobs details         
+          </h1>
+          <button (click)="back()" class="btn btn-default float-right">Back</button>
+         
+      </div>
+        <div class="col-md-12">            
+            <div class="row">
+              <div class="col">
+                <h1 class="text-primary">List of all jobs details</h1>
+              </div>
+              <div class="col-auto d-flex">
+                 <input type="text" name="" id="" class="form-control">
+                 <input type="text" name="" id="" class="form-control">
+                 <input type="text" name="" id="" class="form-control">
+                 <button type="button" class="btn btn-warning">Search</button>
+
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-bordered table-stripped">
+                <thead>
+                    <tr>
+                        <td>uuid</td>
+                        <td>title</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let jobData of jobData">
+                        <td>{{jobData.uuid}}</td>
+                        <td>{{jobData.title}}</td>
+                        <td>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" (click)="getdetals(jobData.uuid)">Info</button>
+                        
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#SkillModal" (click)="getskills(jobData.uuid)">Skills</button>
+                            
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#JobModal" (click)="getrelatedjob(jobData.uuid)">Jobs</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="Infojob">
+          <div class="row">
+            <div class="form-group col-md-6">
+                <label>uuid</label>
+                <input type="text" class="form-control" type="text" formControlName="uuid">
+            </div>
+            <div class="form-group col-md-6">
+                <label>title</label>
+                <input type="text" class="form-control" type="text" formControlName="title">
+            </div>
+            <div class="form-group col-md-6">
+                <label>normalized_job_title</label>
+                <input type="text" class="form-control" type="text" formControlName="normalized_job_title">
+            </div>
+            <div class="form-group col-md-6">
+                <label>parent_uuid</label>
+                <input type="text" class="form-control" type="text" formControlName="parent_uuid">
+            </div>
+          </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Great</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--Skill Modal -->
+<div class="modal fade" id="SkillModal" tabindex="-1" role="dialog" aria-labelledby="SkillModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SkillModalLabel">Skill</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>List of all Skill details</h1>
+        <div class="table-responsive">
+          <table class="table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <td>skill_name</td>
+                    <td>skill_type</td>
+                    <td>description</td>
+                    <td>importance</td>
+                    <td>level</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let skillsData of skills.skills">
+                    <td>{{skillsData.skill_name}}</td>
+                    <td>{{skillsData.skill_type}}</td>
+                    <td>{{skillsData.description}}</td>
+                    <td>{{skillsData.importance}}</td>
+                    <td>{{skillsData.level}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Great</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Skill Modal -->
+<div class="modal fade" id="JobModal" tabindex="-1" role="dialog" aria-labelledby="JobModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="JobModalLabel">Jobs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>List of all Job details</h1>
+        <div class="table-responsive">
+          <table class="table table-bordered table-stripped">
+            <thead>
+                <tr>
+                    <td>uuid</td>
+                    <td>title</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let jobData of relatedjob.related_job_titles">
+                    <td>{{jobData.uuid}}</td>
+                    <td>{{jobData.title}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Great</button>
+      </div>
+    </div>
+  </div>
+</div>
